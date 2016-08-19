@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .container {
+        width: 500px;
+        margin: 100px auto 0;
+        overflow: hidden;
+      }
+
+      .container div {
+        float: left;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background: red;
+      }
+
+      .container .blue {
+        background: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container" class="container">
+    </div>
+    <script type="text/javascript">
+      var oContainer = document.getElementById('container');
+      var aBlock = oContainer.getElementsByTagName('div');
+
+      // for (var i = 0; i < 100; i ++) {
+      //
+      // }
+
+      // step 1: 生成 100 个元素
+      var count = 100;
+
+      while (count --) {
+        oContainer.innerHTML += '<div class="block"></div>';
+      }
+
+      // step 2: 在 [0, 100) 的范围内生成 10 个随机数
+
+      var num = 10;
+
+      var arr = [];
+
+      while (num --) {
+        var randomNum = random(0, 100);
+
+        // console.log(randomNum);
+        if (arr.indexOf(randomNum) !== -1) {
+          num ++;
+          continue;
+        }
+
+        arr.push(randomNum);
+        aBlock[randomNum].className = 'blue';
+      }
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+    </script>
+  </body>
+</html>
